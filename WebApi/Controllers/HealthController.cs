@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Mvc;
+using ProSoft.Results;
 
 namespace ProSoft.ITIM.WebApi.Controllers;
 
@@ -20,12 +21,21 @@ public class HealthController : ControllerBase, IDisposable
       }
    }
 
-   public async Task<string> CheckUpStatusAsync(CancellationToken cancellationToken)
+   [HttpGet]
+   public async Task<Result<string>> CheckUpStatusAsync(CancellationToken cancellationToken)
    {
       _logger.LogDebug("/health called");
       await Task.CompletedTask;
 
-      return "OK";
+      return new Result<string>
+      {
+         Type = ResultType.Success,
+         Value = "OK",
+         Messages = new HashSet<MessageItem>
+         {
+            new MessageItem(MessageType.Information, "Cool")
+         }
+      };
    }
 
    #region IDisposable Interface Implementation

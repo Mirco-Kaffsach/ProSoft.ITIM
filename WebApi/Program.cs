@@ -1,3 +1,6 @@
+using System.Net;
+using System.Reflection.Metadata;
+using ProSoft.ITIM.Core.Extensions;
 using ProSoft.ITIM.WebApi.Infrastructure;
 using Serilog;
 
@@ -14,6 +17,14 @@ builder.Services
    .AddProSoftITInventoryManagement()
    .AddControllers()
    ;
+
+var ipv4String = "10.215.10.90";
+var ipv6String = "2001:0db8:0000:0001:0000:0000:0000:0001";
+var ip = IPAddress.Parse(ipv4String);
+var ipv6 = IPAddress.Parse(ipv6String);
+
+var test1 = ipv4String.ToIPv4Address();
+var test2 = ipv6String.ToIPv6Address();
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();

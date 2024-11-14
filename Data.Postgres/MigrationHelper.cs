@@ -11,7 +11,7 @@ public static class MigrationHelper
 {
    public static IHost Migrate<T>(IHost host) where T : DbContext
    {
-      Guard.Against.Null(host, nameof(host));
+      Guard.Against.Null(host);
 
       using (var scope = host.Services.CreateScope())
       {

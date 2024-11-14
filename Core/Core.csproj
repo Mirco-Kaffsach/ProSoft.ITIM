@@ -8,4 +8,12 @@
         <RootNamespace>ProSoft.ITIM.Core</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Folder Include="Enums\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Ardalis.GuardClauses" Version="5.0.0" />
+    </ItemGroup>
+
 </Project>
